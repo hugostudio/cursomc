@@ -30,5 +30,13 @@ public class CredenciaisDTO implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public String getPassword() {
+		return senha;
+	}
+
+	public void setPassword(String senha) {
+		this.senha = senha;
+	}
 
 }

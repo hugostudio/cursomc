@@ -132,6 +132,7 @@ public class ClienteService {
 		newObj.setEmail(obj.getEmail());
 	}
 	
+	
 	public URI uploadProfilePicture(MultipartFile multipartFile) {
 		UserSS user = UserService.authenticated();
 		if (user == null) {
@@ -145,4 +146,5 @@ public class ClienteService {
 		
 		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");
 	}
+	
 }

@@ -18,6 +18,7 @@ public class UserSS implements UserDetails {
 	private Integer id;
 	private String email;
 	private String senha;
+	private String fullName = "Fulano de Tal";
 	private Collection<? extends GrantedAuthority> authorities;
 
 	
@@ -75,5 +76,13 @@ public class UserSS implements UserDetails {
 
 	public boolean hasRole(Perfil perfil) {
 		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 }
