@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class TaskTodoService {
 	}
 	
 	public List<TaskTodo> list() {		
-		List<TaskTodo> obj = TaskTodoRepository.findAll();
+		List<TaskTodo> obj = TaskTodoRepository.findAll(Sort.by(Direction.DESC, "id"));
 		if(obj == null) {
 			 throw new ObjectNotFoundException( "Object not found! , type: " + TaskTodo.class.getName());
 		}
@@ -42,15 +43,10 @@ public class TaskTodoService {
 	}
 	
 	public TaskTodo update(TaskTodo obj) {
-		TaskTodo newObj = find(obj.getId());
-		updateData(newObj, obj);
-		return TaskTodoRepository.save(newObj);
+		obj.setTsUpdate(Calendar.getInstance().getTime());
+		return TaskTodoRepository.save(obj);
 	}
-	
-	private void updateData(TaskTodo newObj, TaskTodo obj) {
-		newObj.setDescription(obj.getDescription());
-		newObj.setTsUpdate(Calendar.getInstance().getTime());
-	}
+		
 	
 	public void delete(Integer id) {
 		find(id);

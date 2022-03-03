@@ -48,8 +48,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/clientes/**",
-			"/auth/forgot/**"
-	};		
+			"/auth/forgot/**",
+			"/tasks/**"
+	};
+	
+	private static final String[] PUBLIC_MATCHERS_PUT = { "/tasks/**" };
 		
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -61,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 			.antMatchers(HttpMethod.GET,PUBLIC_MATCHES_GET).permitAll()
+			.antMatchers(HttpMethod.PUT,PUBLIC_MATCHERS_PUT).permitAll()
 			.antMatchers(PUBLIC_MATCHES).permitAll()
 			.anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
