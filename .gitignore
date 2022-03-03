@@ -29,3 +29,5 @@
 /04-mysql-heroku.pdf
 /05-servico-de-email.pdf
 /bin/
+
+.vscode/*
