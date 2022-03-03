@@ -65,4 +65,5 @@ public class TaskTodoResource {
 		Page<TaskTodo> lista = TaskTodoService.listPage(page, size, orderBy, direction);		
 		return ResponseEntity.ok().body(lista);
 	}
+	
 }
