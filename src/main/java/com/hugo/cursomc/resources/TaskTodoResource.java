@@ -19,7 +19,7 @@ import com.hugo.cursomc.domain.TaskTodo;
 import com.hugo.cursomc.services.TaskTodoService;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", allowCredentials = "true")
 @RequestMapping(value="/tasks")
 public class TaskTodoResource {
 
